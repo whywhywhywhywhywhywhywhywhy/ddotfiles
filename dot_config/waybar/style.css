@@ -1,0 +1,88 @@
+ 
+
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: mononoki Nerd Font;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: white;
+}
+
+#workspaces {
+	background-color: #fbf3db;
+	margin: 5px;
+	margin-left: 10px;
+	border-radius: 5px;
+}
+#workspaces button {
+    padding:5px 10px;
+    color: #ca4898;
+}
+
+#workspaces button.active {
+    color: #c44392;
+    background-color: #fbf3db;
+    border-radius: 5px;
+}
+
+#workspaces button:hover {
+	background-color: #c44392;
+	color: #fbf3db;
+	border-radius: 5px;
+}
+
+#custom-date, #clock, #battery, #wireplumber, #network {
+	background-color: #fbf3db;
+	padding: 5px 10px;
+	margin: 5px 0px;
+}
+
+#custom-date {
+	color: #c44392;
+}
+
+#custom-power {
+	color: #fbf3db;
+	background-color: #428b00;
+	border-radius: 5px;
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+	padding: 5px 10px;
+}
+
+#clock {
+    color: #cc1729;
+    border-radius: 0px 5px 5px 0px;
+    margin-right: 10px;
+}
+
+#battery {
+    color: #428b00;
+}
+
+#battery.charging {
+    color: #428b00;
+}
+
+#battery.warning:not(.charging) {
+    background-color: #a78300;
+    color: #fbf3db;
+    border-radius: 5px 5px 5px 5px;
+}
+
+#network {
+	color: #00978a;
+	border-radius: 5px 0px 0px 5px;
+}
+
+#wireplumber {
+	color: #0072d4
+}
