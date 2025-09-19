@@ -1,0 +1,54 @@
+
+
+ 
+
+[[ $- != *i* ]] && return
+
+
+
+# History in cache directory:
+HISTSIZE=10000000000
+SAVEHIST=10000000000
+HISTFILE=~/.cache/zsh/history
+
+# completion
+setopt auto_pushd
+autoload -U compinit && compinit -u
+zstyle ':completion:*' menu select
+# Auto complete with case insenstivity
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)		# Include hidden files.
+# aliases
+alias ls='eza --icons=auto -x'
+alias cat='bat'
+alias reb=' reboot'
+alias shut=' poweroff'
+alias nnn='nnn -de'
+alias hyp='dbus-launch --exit-with-session hyprland'
+alias x='sx sh .xinitrc'
+alias play='openmpt123'
+alias mpv='flatpak run io.mpv.Mpv'
+alias up='paru && flatpak update'
+alias remo=' doas pacman -Qdtq | doas ifne pacman -Rns -'
+# setting path
+export PATH=/home/alex/.local/bin/:$PATH
+export PATH=/usr/local/bin:$PATH
+export PATH=/home/alex/.cargo/bin:$PATH
+export PATH=/home/alex/go/bin:$PATH
+# env variables
+export EDITOR=micro
+export BROWSER=firefox 
+export "MICRO_TRUECOLOR=1"
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+# zsh plugins and configuration of those plugins 
+source ~/catppuccin_mocha-zsh-syntax-highlighting.zsh
+source  /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+eval "$(starship init zsh)"
