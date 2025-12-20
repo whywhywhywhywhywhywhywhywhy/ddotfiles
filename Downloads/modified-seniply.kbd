@@ -17,12 +17,12 @@
 )
 
 (defsrc
-  esc      f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12
-  grv      1     2     3     4     5     6     7     8     9     0     -     =     bspc
-  tab      q     w     e     r     t     y     u     i     o     p     [     ]     \
+  esc      f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12 ins del 
+  grv      1     2     3     4     5     6     7     8     9     0     -     =     bspc 
+  tab      q     w     e     r     t     y     u     i     o     p     [     ]     \ 
   caps     a     s     d     f     g     h     j     k     l     ;     '     ret
   lsft        z     x     c     v     b     n     m     ,     .     /     rsft
-  lctl        lmet  lalt              spc               ralt  rctl
+  lctl fn      lmet  lalt              spc               ralt  rctl
 )
 
 (defalias 
@@ -46,6 +46,7 @@
 )
 
 
+
 (defalias
   cpy C-c
   pst C-v
@@ -67,21 +68,21 @@
 
 
 (deflayer colemak-dh-sp
-  esc      f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   
+  esc      f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11 f12 ins del 
   grv      1     2     3     4     5     6   7     8     9     0 -   = bspc  
   tab      w     l     y     p     k   z     x    o     u    ;  [ ] \ 
-  bspc    c   r   s   t  b  f  n   e   i   a '     ret
+  bspc    c   r   s   t   b   f   n   e   i   a     '     ret 
   lsft       j  v   d     g         q    m  h /         ,     .    rsft
-  lctl     lmet  @ext            spc           ralt      @sym1 @sym2 
+  lctl   fn  lmet  @ext            spc                 @sym1 @sym2 
 )
 
 
 (deflayer extend
-  _        play rewind previoussong nextsong ejectcd refresh brdn brup www mail prog1 prog2
+  _ _       play rewind previoussong nextsong ejectcd refresh brdn brup www mail prog1 prog2 _ _ 
   _        f1    f2    f3    f4    f5    f6    f7    f8    f9   f10    f11   f12   _
-  _        esc   @bk   @fnd  @fw   ins     pgup  home  up    end   caps  cmp   menu
-  _        @la_s lmet  @ls_s @lc_s @ra_s   pgdn  lft   down  rght  del   _
-  _           @cut  @cpy  tab   @pst  @udo  cmp   ret   bks   @lsc_s @lac_s _
+        esc   @bk   @fnd  @fw   ins     pgup  home  up    end   caps  cmp   menu _ _ 
+      @la_s lmet  @ls_s @lc_s @ra_s   pgdn  lft   down  rght  del _  
+  _           @cut  @cpy  tab   @pst  @udo  cmp   ret   bks   @lsc_s @lac_s _  
   _            _    _                 _                 ret   @fun  _     _
 )
 
@@ -89,7 +90,7 @@
 
 
 (deflayer function
-  _        _     _     _     _     _     _     _     _     _     _          
+  _  _      _     _     _     _     _     _     _     _     _     _     _  _ 
   _        _     _     _     _     _     _     _     _     _     _     _     _     _
   _        _  @ly_dh _   ssrq  _     _     f12   f7    f8    f9    @v+   _     _
   _        @la_s lmet  @ls_s @lc_s @ra_s _     f11   f4    f5    f6    @v-   _
@@ -98,7 +99,7 @@
 ) 
 
 (deflayer symbols1
-  _        _     _     _     _     _     _     _     _     _     _          
+  _   _     _     _     _     _     _     _     _     _     _     _ _      _   
   _        _     _     _     _     _     _     _     _     _     _     _     _     _
   _        S-1   S-2   S-3   S-4   S-5   «     =     7     8     9     +     _     _
   _        ;     :     {     \(    [     »     *     4     5     6     -     _
@@ -107,7 +108,7 @@
 )
 
 (deflayer symbols2
-  _        _     _     _     _     _     _     _     _     _     _          
+  _    _    _     _     _     _     _     _     _     _     _     _   _     _   
   _        _     _     _     _     _     _     _     _     _     _     _     _     _
   _        ¡     €     …     ¢     ½     _     ≠     ∞     @dum  №     ±     _     _
   _        \\    S-\\  §     ™     ®     _     ×     ←     @d'   →     \_    _
@@ -116,7 +117,7 @@
 )
 
 (deflayer empty
-  _        _    _    _    _    _    _    _    _    _    _    _    _    
+  _     _   _    _    _    _    _    _    _    _    _    _    _    _  _  _ 
   _        _    _    _    _    _    _    _    _    _    _    _    _    _
   _        _    _    _    _    _    _    _    _    _    _    _    _    _
   _        _    _    _    _    _    _    _    _    _    _    _    _ 

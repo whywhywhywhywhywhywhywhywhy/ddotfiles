@@ -11,18 +11,9 @@ HISTSIZE=10000000000
 SAVEHIST=10000000000
 HISTFILE=~/.cache/zsh/history
 
-# completion
-setopt auto_pushd
-autoload -U compinit && compinit -u
-zstyle ':completion:*' menu select
-# Auto complete with case insenstivity
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-zmodload zsh/complist
-compinit
-_comp_options+=(globdots)		# Include hidden files.
 # aliases
-alias ls='eza --icons=auto -x'
+alias ls='eza --icons=auto -x -A'
 alias cat='bat'
 alias reb=' reboot'
 alias shut=' poweroff'
@@ -44,11 +35,12 @@ export BROWSER=firefox
 export "MICRO_TRUECOLOR=1"
 export ELECTRON_OZONE_PLATFORM_HINT=auto
 # zsh plugins and configuration of those plugins 
-source ~/catppuccin_mocha-zsh-syntax-highlighting.zsh
 source  /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
 
 eval "$(starship init zsh)"
