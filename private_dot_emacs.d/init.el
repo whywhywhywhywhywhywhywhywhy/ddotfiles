@@ -19,18 +19,23 @@
 
 (setq show-paren-delay 0)
 (show-paren-mode)
+;;minibuffer config
+(context-menu-mode t)
 
-(icomplete-vertical-mode)
-;;set font
+;; themes
+(load-theme 'solarized-selenized-light t)
+(use-package solarized-theme
+  :ensure t) 
+;;set binds
 
 
+(keymap-set minibuffer-local-map "M-A" 'marginalia-cycle)
 
 ;; package stuff
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
-(use-package solarized-theme
-  :ensure t)
+
 (use-package markdown-mode)
 (use-package paredit
   :ensure t)
@@ -49,9 +54,7 @@
   ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
   ;; available in the *Completions* buffer, add it to the
   ;; `completion-list-mode-map'.
-  :bind (:map minibuffer-local-map
-         ("M-A" . marginalia-cycle))
-  (use-package avy)
+  
   ;; The :init section is always executed.
   :init
 
@@ -67,8 +70,46 @@
   (completion-category-overrides '((file (styles partial-completion))))
   (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
 
-;; load selenized
-(load-theme 'solarized-selenized-light t)
+;; Enable Vertico.
+(use-package vertico
+  :custom
+  (vertico-count 20) ;; Show more candidates
+  (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
+  (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
+  :init
+  (vertico-mode))
+
+(use-package denote
+  :ensure t
+  :hook (dired-mode . denote-dired-mode)
+  :bind
+  (("C-c n n" . denote)
+   ("C-c n r" . denote-rename-file)
+   ("C-c n l" . denote-link)
+   ("C-c n b" . denote-backlinks)
+   ("C-c n d" . denote-dired)
+   ("C-c n g" . denote-grep))
+  :config
+  (setq denote-directory (expand-file-name "~/notes/")))
+
+(use-package embark
+  :ensure t
+  :bind (("C-." . embark-act)
+         :map minibuffer-local-map
+         ("C-c C-c" . embark-collect)
+         ("C-c C-e" . embark-export)))
+
+;; avy setup(very important)
+(use-package avy)
+(avy-setup-default)
+(global-set-key (kbd "C-c C-j") 'avy-resume)
+(global-set-key (kbd "M-j") 'avy-goto-char-timer)
+(use-package org-download)
+(use-package auctex)
+(use-package cdlatex)
+
+
+
 
 ;; Use spaces, not tabs, for indentation.
 (setq-default indent-tabs-mode nil)
@@ -149,6 +190,14 @@
 
 ;; Enable Org mode and configure it.
 (use-package org)
+
+;; enable visual-mode line
+(with-eval-after-load 'org       
+  (add-hook 'org-mode-hook #'visual-line-mode))
+
+;; cdlatex setup 
+(add-hook 'org-mode-hook 'turn-on-org-cdlatex)
+(add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
 
 ;;end of init
 (provide 'init)
