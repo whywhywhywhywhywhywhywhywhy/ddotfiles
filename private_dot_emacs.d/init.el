@@ -99,6 +99,14 @@
          ("C-c C-c" . embark-collect)
          ("C-c C-e" . embark-export)))
 
+(use-package consult
+  :ensure t
+  :bind (
+         ("M-s b" . consult-buffer)
+         ("M-s g" . consult-grep)
+         ("M-s j" . consult-outline)
+         ))
+
 ;; avy setup(very important)
 (use-package avy)
 (avy-setup-default)
