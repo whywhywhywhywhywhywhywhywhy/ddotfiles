@@ -18,3 +18,11 @@
 (setq use-package-always-defer t)
 
 (setq initial-major-mode 'fundamental-mode)
+;; more performance stuff
+(setq redisplay-skip-fontification-on-input t)
+;; lsp performance
+(setq read-process-output-max (* 4 1024 1024)) ; 4MB
+
+
+
+

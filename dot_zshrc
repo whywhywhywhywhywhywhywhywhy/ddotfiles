@@ -11,8 +11,8 @@ HISTSIZE=10000000000
 SAVEHIST=10000000000
 HISTFILE=~/.cache/zsh/history
 
-# set up completion
-source ~/completion.zsh
+
+
 
 # aliases
 alias ls='eza --icons=auto -x -A'
@@ -33,6 +33,7 @@ export PATH=/home/alex/.cargo/bin:$PATH
 export PATH=/home/alex/go/bin:$PATH
 # env variables
 export EDITOR=emacsclient
+export VISUAL=emacsclient
 export BROWSER=firefox 
 # zsh plugins and configuration of those plugins 
 source  /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh

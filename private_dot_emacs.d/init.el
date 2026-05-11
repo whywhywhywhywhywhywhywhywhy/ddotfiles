@@ -7,6 +7,12 @@
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
+;; harper
+(with-eval-after-load 'eglot
+      (add-to-list 'eglot-server-programs
+                   '(org-mode . ("harper-ls" "--stdio"))))
+(add-hook 'org-mode-hook #'eglot-ensure)
+
 ;; Tweak UI.
 (when (display-graphic-p)
   (tool-bar-mode 0)
@@ -21,6 +27,24 @@
 (show-paren-mode)
 ;;minibuffer config
 (context-menu-mode t)
+
+;; misc stuff
+
+;; don't render cursors in non-focused windows
+(setq-default cursor-in-non-selected-windows nil)
+(setq highlight-nonselected-windows nil)
+;; don't save duplicates in kill ring
+(setq kill-do-not-save-duplicates t)
+;; auto select help windows
+(setq help-window-select t)
+;; faster mark popping
+(setq set-mark-command-repeat-pop t)
+
+;; isearch counter
+(setopt isearch-lazy-count t)
+(setopt lazy-count-prefix-format nil)
+(setopt lazy-count-suffix-format " [%s/%s]")
+
 
 ;; themes
 (load-theme 'solarized-selenized-light t)
@@ -99,23 +123,24 @@
          ("C-c C-c" . embark-collect)
          ("C-c C-e" . embark-export)))
 
-(use-package consult
-  :ensure t
-  :bind (
-         ("M-s b" . consult-buffer)
-         ("M-s g" . consult-grep)
-         ("M-s j" . consult-outline)
-         ))
+
 
 ;; avy setup(very important)
 (use-package avy)
 (avy-setup-default)
 (global-set-key (kbd "C-c C-j") 'avy-resume)
 (global-set-key (kbd "M-j") 'avy-goto-char-timer)
+;; org-download
 (use-package org-download)
+(require 'org-download)
+
+;; Drag-and-drop to `dired`
+(add-hook 'dired-mode-hook 'org-download-enable)
+
+
 (use-package auctex)
 (use-package cdlatex)
-
+(use-package pdf-tools)
 
 
 
