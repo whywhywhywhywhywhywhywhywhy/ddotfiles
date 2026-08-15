@@ -13,6 +13,9 @@
                    '(org-mode . ("harper-ls" "--stdio"))))
 (add-hook 'org-mode-hook #'eglot-ensure)
 
+(setq-default eglot-workspace-configuration
+              '(:harper-ls (:dialect "Canadian")))
+
 ;; Tweak UI.
 (when (display-graphic-p)
   (tool-bar-mode 0)
@@ -59,8 +62,10 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
-
-(use-package markdown-mode)
+(use-package org-modern
+  :ensure t)
+(use-package markdown-mode
+  :ensure t)
 (use-package paredit
   :ensure t)
 (use-package rainbow-delimiters
@@ -231,6 +236,7 @@
 ;; cdlatex setup 
 (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
 (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
-
+;; org-modern setup globally
+(with-eval-after-load 'org (global-org-modern-mode))
 ;;end of init
 (provide 'init)
